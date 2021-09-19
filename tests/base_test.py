@@ -2,8 +2,6 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-unittest.TestLoader.sortTestMethodsUsing = None
-
 
 class BaseTest(unittest.TestCase):
     def setUp(self):

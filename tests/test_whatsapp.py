@@ -9,6 +9,7 @@ from utils.test_cases import test_cases
 # If you want to run it, you should type: python <module-name.py>
 
 class TestWhatsapp(BaseTest):
-    pass
+    a = MainPage(self.driver)
+
 
 

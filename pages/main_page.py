@@ -1,7 +1,6 @@
+from selenium.webdriver.common.keys import Keys
 from pages.base_page import BasePage
-from pages.LoginModal import LoginModal
-from pages.chat_page import ChatPage
-from utils.locators import *
+from utils.locators import Locators
 
 
 # Page objects are written in this module.
@@ -12,14 +11,6 @@ class MainPage(BasePage):
         self.locator = Locators
         super().__init__(driver)  # Python3 version
 
-    def close_popup_modal(self):
-        try:
-            return LoginModal(self.find_element(*self.locator.POPUP).click())
-        except:
-            print('popup was not there')
+    def click_login_btn(self):
+        pass
 
-    def click_user_icon(self):
-        self.close_popup_modal()
-        self.find_element(*self.locator.USER_ICON).click()
-        self.wait_element(*self.locator.USERNAME)
-        return LoginModal(self.driver)
