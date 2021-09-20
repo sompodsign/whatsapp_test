@@ -52,8 +52,8 @@ class ChatPage(BasePage):
 
     def check_message_status(self):
         self.wait_element(*self.locator.LAST_MESSAGE)
-        status = self.find_element(*self.locator.STATUS).find_element_by_tag_name('span').get_attribute('aria-label')
-        return status
+        initial_status = self.find_element(*self.locator.STATUS).find_element_by_tag_name('span').get_attribute('aria-label')
+        return initial_status
 
     def send_message_to_matched_contact(self):
         self.login()
@@ -65,7 +65,7 @@ class ChatPage(BasePage):
         wb = excel.Workbook()
         ws = wb.active
         ws['A1'], ws['B1'] = 'Contact', 'Status'
-        ws['A2'], ws['B2'] = self.read_contact('contacts.xlsx'), 'Sent'
+        ws['A2'], ws['B2'] = self.read_contact('contacts.xlsx'), status
         wb.save(filename)
         wb.close()
         print(filename, "created")
@@ -81,8 +81,11 @@ class ChatPage(BasePage):
     def seen_status_to_excel(self):
         self.login()
         self.send_message()
-        status = self.check_message_status()
-        self.write_excel(filename='seen_status.xlsx', status=status)
+        if self.check_message_status() == "seen":
+            current_status = "seen"
+        else:
+            current_status = "not seen"
+        self.write_excel(filename='seen_status.xlsx', status=current_status)
 
     def menu_open(self):
         self.find_element(*self.locator.VERTICAL_DOT_MENU).click()
