@@ -52,6 +52,7 @@ class ChatPage(BasePage):
         message_elem = self.find_element(*self.locator.LAST_MESSAGE)
 
     def send_message_to_matched_contact(self):
+        self.login()
         self.send_message()
         time.sleep(2)
         return self.last_message()
@@ -65,8 +66,8 @@ class ChatPage(BasePage):
         wb.close()
 
     def send_message_and_write_excel(self):
+        self.login()
         self.send_message()
         time.sleep(5)
-        print(self.get_url())
         if self.last_message():
             self.write_excel(filename='message_successful.xlsx')

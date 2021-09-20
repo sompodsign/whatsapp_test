@@ -19,7 +19,6 @@ class TestWhatsappWeb(BaseTest):
     # def test_002_verify_send_message(self):
     #     print("\n" + str(test_cases(1)))
     #     chat_page = ChatPage(self.driver)
-    #     chat_page.login()
     #     self.assertTrue(chat_page.send_message_to_matched_contact())
 
     def test_003_successful_message_sent(self):
