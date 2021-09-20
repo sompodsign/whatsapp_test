@@ -1,8 +1,7 @@
-import unittest
+
 from selenium.webdriver.common.keys import Keys
 import openpyxl as excel
 import time
-from tests.base_test import BaseTest
 from utils.locators import Locators
 from pages.base_page import BasePage
 
@@ -11,6 +10,29 @@ class ChatPage(BasePage):
     def __init__(self, driver):
         self.locator = Locators
         super(ChatPage, self).__init__(driver)  # Python2 version
+
+    def menu_open(self):
+        self.find_element(*self.locator.VERTICAL_DOT_MENU).click()
+
+    def click_logout(self):
+        self.find_element(*self.locator.LOGOUT).click()
+
+    def canvas_on_page(self):
+        self.wait_element(*self.locator.QR_CODE)
+        canvas = self.find_element(*self.locator.QR_CODE)
+        time.sleep(1)
+        if canvas:
+            return True
+        return False
+
+    def write_excel(self, status=None, filename=''):
+        wb = excel.Workbook()
+        ws = wb.active
+        ws['A1'], ws['B1'] = 'Contact', 'Status'
+        ws['A2'], ws['B2'] = self.read_contact('contacts.xlsx'), status
+        wb.save(filename)
+        wb.close()
+        print(filename, "created")
 
     def read_contact(self, filename):
         file = excel.load_workbook(filename)
@@ -61,15 +83,6 @@ class ChatPage(BasePage):
         time.sleep(1)
         return self.last_message()
 
-    def write_excel(self, status=None, filename=''):
-        wb = excel.Workbook()
-        ws = wb.active
-        ws['A1'], ws['B1'] = 'Contact', 'Status'
-        ws['A2'], ws['B2'] = self.read_contact('contacts.xlsx'), status
-        wb.save(filename)
-        wb.close()
-        print(filename, "created")
-
     def send_message_and_write_excel(self):
         self.login()
         self.send_message()
@@ -86,20 +99,6 @@ class ChatPage(BasePage):
         else:
             current_status = "not seen"
         self.write_excel(filename='seen_status.xlsx', status=current_status)
-
-    def menu_open(self):
-        self.find_element(*self.locator.VERTICAL_DOT_MENU).click()
-
-    def click_logout(self):
-        self.find_element(*self.locator.LOGOUT).click()
-
-    def canvas_on_page(self):
-        self.wait_element(*self.locator.QR_CODE)
-        canvas = self.find_element(*self.locator.QR_CODE)
-        time.sleep(1)
-        if canvas:
-            return True
-        return False
 
     def logout(self):
         self.login()
