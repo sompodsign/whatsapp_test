@@ -4,13 +4,12 @@ from selenium.webdriver.common.by import By
 # for maintainability we can seperate web objects by page name
 
 class Locators(object):
-    LOGO = (By.ID, 'nav-logo')
-    ACCOUNT = (By.ID, 'nav-link-accountList')
-    SIGNUP = (By.CSS_SELECTOR, '#nav-signin-tooltip > div > a')
-    LOGIN = (By.CSS_SELECTOR, '#nav-signin-tooltip > a')
-    SEARCH = (By.ID, 'twotabsearchtextbox')
-    SEARCH_LIST = (By.CSS_SELECTOR, 'div[data-component-type="s-search-result"]')
-    EMAIL = (By.ID, 'ap_email')
-    PASSWORD = (By.ID, 'ap_password')
-    SUBMIT = (By.ID, 'signInSubmit-input')
-    ERROR_MESSAGE = (By.ID, 'message_error')
+    QR_CODE = (By.XPATH, "//body/div[@id='app']/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/canvas[1]")
+    SEARCH_BOX = (By.XPATH, "//div[@role='textbox']")
+    SEARCH_RESULT = (By.XPATH, "//div[contains(text(),'Contacts')]")
+    SEARCHED_CONTACT = (By.XPATH, "//body/div[@id='app']/div[1]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]")
+    MESSAGE_INPUT_FIELD = (By.XPATH, "div[role='textbox'][contenteditable='true'][data-tab='9']")
+    LAST_MESSAGE = (By.CSS_SELECTOR, "div[class='_2wUmf message-out focusable-list-item'] div[class='_1Gy50']")
+    STATUS = (By.CSS_SELECTOR, "div[class='_2wUmf message-out focusable-list-item'] div[class='_2F01v']")
+    VERTICAL_DOT_MENU = (By.XPATH, "//header/div[2]/div[1]/span[1]/div[3]/div[1]/span[1]")
+    LOGOUT = (By.XPATH, "//div[contains(text(),'Log out')]")
