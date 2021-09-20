@@ -33,5 +33,5 @@ class TestWhatsappWeb(BaseTest):
 
     def test_005_logout(self):
         print("\n" + str(test_cases(4)))
-        caht_page = ChatPage(self.driver)
+        chat_page = ChatPage(self.driver)
         chat_page.logout()

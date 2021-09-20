@@ -22,7 +22,7 @@ class ChatPage(BasePage):
     def login(self):
         self.wait_element(*self.locator.QR_CODE)
         self.wait_element_custom_time(*self.locator.SEARCH_BOX, time=50)
-        time.sleep(2)
+        time.sleep(1)
 
     def search_contact(self, number):
         time.sleep(1)
@@ -84,5 +84,26 @@ class ChatPage(BasePage):
         status = self.check_message_status()
         self.write_excel(filename='seen_status.xlsx', status=status)
 
+    def menu_open(self):
+        self.find_element(*self.locator.VERTICAL_DOT_MENU).click()
 
+    def click_logout(self):
+        self.find_element(*self.locator.LOGOUT).click()
+
+    def canvas_on_page(self):
+        self.wait_element(*self.locator.QR_CODE)
+        canvas = self.find_element(*self.locator.QR_CODE)
+        time.sleep(1)
+        if canvas:
+            return True
+        return False
+
+    def logout(self):
+        self.login()
+        self.menu_open()
+        self.click_logout()
+        if self.canvas_on_page():
+            print("Successfully Logged out!")
+        else:
+            print("Something went wrong while logging out.")
 
