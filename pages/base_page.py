@@ -39,5 +39,13 @@ class BasePage(object):
         try:
             WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator))
         except TimeoutException:
-            print("\n * ELEMENT NOT FOUND WITHIN GIVEN TIME! --> %s" %(locator[1]))
+            print("\n * ELEMENT NOT FOUND WITHIN GIVEN TIME! --> %s" % (locator[1]))
+            self.driver.quit()
+
+    # Method to explicitly wait for user defined time.
+    def wait_element_custom_time(self, *locator, time):
+        try:
+            WebDriverWait(self.driver, time).until(EC.presence_of_element_located(locator))
+        except TimeoutException:
+            print("\n * ELEMENT NOT FOUND WITHIN GIVEN TIME! --> %s" % (locator[1]))
             self.driver.quit()

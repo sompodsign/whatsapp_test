@@ -14,13 +14,13 @@ class BaseTest(unittest.TestCase):
         options.add_argument('--disable-gpu')
         self.driver = webdriver.Chrome('c:\webdrivers\chromedriver.exe', options=options)
         # self.driver = webdriver.Firefox()
-        self.driver.get("https://www.evaly.com.bd")
-        self.driver.maximize_window()
+        self.driver.get("https://web.whatsapp.com/")
+        # self.driver.maximize_window()
 
     def tearDown(self):
         self.driver.close()
 
-# if __name__ == "__main__":
-#     unittest.TestLoader.sortTestMethodsUsing = None
-#     suite = unittest.TestLoader().loadTestsFromTestCase(TestPages)
-#     unittest.TextTestRunner(verbosity=1).run(suite)
+if __name__ == "__main__":
+    unittest.TestLoader.sortTestMethodsUsing = None
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestPages)
+    unittest.TextTestRunner(verbosity=1).run(suite)
