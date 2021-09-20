@@ -1,8 +1,12 @@
 import unittest
 from tests.base_test import BaseTest
-from pages.main_page import *
-from utils.test_cases import test_cases
+from utils.locators import Locators
 
 
 class ChatPage(BaseTest):
-    pass
+    def __init__(self, driver):
+        self.locator = Locators
+        super(ChatPage, self).__init__(driver)
+
+    def enter_target_number(self):
+        pass

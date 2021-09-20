@@ -9,7 +9,11 @@ from utils.test_cases import test_cases
 # If you want to run it, you should type: python <module-name.py>
 
 class TestWhatsapp(BaseTest):
-    a = MainPage(self.driver)
+
+    def test_001_search_number(self):
+        print("\n" + str(test_cases(0)))
+        page = MainPage(self.driver)
+        page.check_logged_in()
 
 
 
