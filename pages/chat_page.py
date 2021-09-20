@@ -22,12 +22,14 @@ class ChatPage(BasePage):
     def login(self):
         self.wait_element(*self.locator.QR_CODE)
         self.wait_element_custom_time(*self.locator.SEARCH_BOX, time=50)
+        time.sleep(2)
 
     def search_contact(self, number):
         time.sleep(1)
         search_field = self.find_element(*self.locator.SEARCH_BOX)
         search_field.send_keys(number)
         self.wait_element(*self.locator.MATCHED_CONTACT)
+        time.sleep(1)
         return self.find_element(*self.locator.MATCHED_CONTACT)
 
     def send_message(self):
@@ -38,6 +40,7 @@ class ChatPage(BasePage):
         message_input_field = self.find_element(*self.locator.MESSAGE_INPUT_FIELD)
         message_input_field.send_keys(message)
         message_input_field.send_keys(Keys.ENTER)
+        time.sleep(1)
 
     def last_message(self):
         self.wait_element(*self.locator.LAST_MESSAGE)
@@ -49,25 +52,37 @@ class ChatPage(BasePage):
 
     def check_message_status(self):
         self.wait_element(*self.locator.LAST_MESSAGE)
-        message_elem = self.find_element(*self.locator.LAST_MESSAGE)
+        status = self.find_element(*self.locator.STATUS).find_element_by_tag_name('span').get_attribute('aria-label')
+        return status
 
     def send_message_to_matched_contact(self):
         self.login()
         self.send_message()
-        time.sleep(2)
+        time.sleep(1)
         return self.last_message()
 
-    def write_excel(self, status='Sent', filename=''):
+    def write_excel(self, status=None, filename=''):
         wb = excel.Workbook()
         ws = wb.active
         ws['A1'], ws['B1'] = 'Contact', 'Status'
-        ws['A2'], ws['B2'] = self.read_contact('contacts.xlsx'), status
+        ws['A2'], ws['B2'] = self.read_contact('contacts.xlsx'), 'Sent'
         wb.save(filename)
         wb.close()
+        print(filename, "created")
 
     def send_message_and_write_excel(self):
         self.login()
         self.send_message()
-        time.sleep(5)
         if self.last_message():
-            self.write_excel(filename='message_successful.xlsx')
+            if self.check_message_status() != "Pending":
+                self.write_excel(filename='message_successful.xlsx')
+            print('Message not sent yet')
+
+    def seen_status_to_excel(self):
+        self.login()
+        self.send_message()
+        status = self.check_message_status()
+        self.write_excel(filename='seen_status.xlsx', status=status)
+
+
+
