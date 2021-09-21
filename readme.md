@@ -11,7 +11,7 @@ pip install -r requirements.txt
 ```
 ## Run tests and generate report
 ```
-python tests/test_whatsapp_web.py 
+python tests/test_whatsapp.py 
 ```
 ## if you want to run all tests, you should type:
 ```
@@ -19,8 +19,8 @@ python -m unittest
  ```
 ## If you want to run just a class, you should type:
 ``` 
-python -m unittest tests.test_whatsapp_web.TestWhatsappWeb
+python -m unittest tests.test_whatsapp.TestWhatsappWeb
 ```
 ## If you want to run just a test method, you should type:
 ```
-python -m unittest tests.test_whatsapp_web.TestWhatsappWeb.test_002_verify_send_message
+python -m unittest tests.test_whatsapp.TestWhatsappWeb.test_002_verify_send_message
