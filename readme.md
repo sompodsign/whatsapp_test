@@ -8,7 +8,7 @@ Page-object-model (POM) is a pattern that you can apply it to develop efficient 
 
 ```python
 # Run tests with python <module_name>.py
-python test_whatsapp.py 
+python test_whatsapp_web.py 
 ```
 ## if you want to run all tests, you should type:
 ```
