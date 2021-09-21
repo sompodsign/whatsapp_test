@@ -1,9 +1,8 @@
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 import unittest
 import HtmlTestRunner
-import os
-import sys
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
 from tests.base_test import BaseTest
 from pages.main_page import *
 from utils.test_cases import test_cases
@@ -28,25 +27,26 @@ class TestWhatsappWeb(BaseTest):
         chat_page = ChatPage(self.driver)
         self.assertTrue(chat_page.send_message_to_matched_contact())
 
-    def test_003_successful_message_sent(self):
-        print("\n" + str(test_cases(2)))
-        print("Please Scan the QR code with your smart phones whatsapp scanner")
-        chat_page = ChatPage(self.driver)
-        chat_page.send_message_and_write_excel()
+    # def test_003_successful_message_sent(self):
+    #     print("\n" + str(test_cases(2)))
+    #     print("Please Scan the QR code with your smart phones whatsapp scanner")
+    #     chat_page = ChatPage(self.driver)
+    #     chat_page.send_message_and_write_excel()
 
-    def test_004_seen_status(self):
-        print("\n" + str(test_cases(3)))
-        print("Please Scan the QR code with your smart phones whatsapp scanner")
-        chat_page = ChatPage(self.driver)
-        chat_page.seen_status_to_excel()
+    # def test_004_seen_status(self):
+    #     print("\n" + str(test_cases(3)))
+    #     print("Please Scan the QR code with your smart phones whatsapp scanner")
+    #     chat_page = ChatPage(self.driver)
+    #     chat_page.seen_status_to_excel()
 
-    def test_005_logout(self):
-        print("\n" + str(test_cases(4)))
-        print("Please Scan the QR code with your smart phones whatsapp scanner")
-        chat_page = ChatPage(self.driver)
-        chat_page.logout()
+    # def test_005_logout(self):
+    #     print("\n" + str(test_cases(4)))
+    #     print("Please Scan the QR code with your smart phones whatsapp scanner")
+    #     chat_page = ChatPage(self.driver)
+    #     chat_page.logout()
 
 if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestWhatsappWeb)
-    unittest.TextTestRunner(verbosity=1).run(suite)
+    # unittest.TestLoader.sortTestMethodsUsing = None
+    # suite = unittest.TestLoader().loadTestsFromTestCase(TestPages)
+    # unittest.TextTestRunner(verbosity=1).run(suite)
     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='C:/Users/Shampad/Desktop/QUPS/whatsapp_test/reports'))

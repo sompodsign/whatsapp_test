@@ -33,8 +33,8 @@ class MainPage(BasePage):
         search_field = self.find_element(*self.locator.SEARCH_BOX)
         search_field.send_keys(contact_number)
         self.wait_element(*self.locator.MATCHED_CONTACT)
-        search_result = self.find_element(*self.locator.MATCHED_CONTACT)
         time.sleep(3)
+        search_result = self.find_element(*self.locator.MATCHED_CONTACT)
         if search_result:
             print(f"Searched Contact: {contact_number}")
             return True
