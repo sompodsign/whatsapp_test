@@ -1,4 +1,5 @@
-
+import unittest
+import HtmlTestRunner
 from tests.base_test import BaseTest
 from pages.main_page import *
 from utils.test_cases import test_cases
@@ -40,3 +41,8 @@ class TestWhatsappWeb(BaseTest):
     #     print("Please Scan the QR code with your smart phones whatsapp scanner")
     #     chat_page = ChatPage(self.driver)
     #     chat_page.logout()
+
+
+
+# if __name__ == "__main__":
+#     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='C:/Users/sompod/Desktop/QUPS/whatsapp_test/reports'))

@@ -1,4 +1,5 @@
 import unittest
+import HtmlTestRunner
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
@@ -23,5 +24,6 @@ class BaseTest(unittest.TestCase):
 
 if __name__ == "__main__":
     # unittest.TestLoader.sortTestMethodsUsing = None
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestPages)
-    unittest.TextTestRunner(verbosity=1).run(suite)
+    # suite = unittest.TestLoader().loadTestsFromTestCase(TestPages)
+    # unittest.TextTestRunner(verbosity=1).run(suite)
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='C:/Users/sompod/Desktop/QUPS/whatsapp_test/reports'))

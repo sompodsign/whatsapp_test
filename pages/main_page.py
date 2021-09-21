@@ -16,9 +16,9 @@ class MainPage(BasePage):
         super().__init__(driver)  # Python3 version
 
     def read_contact(self, filename):
-        file = os.path.abspath(filename)
-        print(file)
-        file = excel.load_workbook('C:\\Users\\Shampad\\Desktop\\QUPS\\whatsapp_test\\contacts.xlsx')
+        # file = os.path.abspath(filename)
+        # print(file)
+        file = excel.load_workbook(filename)
         sheet = file.active
         firstCol = sheet['A']
         file.close()
