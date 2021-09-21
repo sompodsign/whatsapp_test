@@ -22,7 +22,7 @@ class BaseTest(unittest.TestCase):
         self.driver.close()
 
 
-if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestPages)
-    unittest.TextTestRunner(verbosity=1).run(suite)
-    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='C:/Users/Shampad/Desktop/QUPS/whatsapp_test/reports'))
+# if __name__ == "__main__":
+#     suite = unittest.TestLoader().loadTestsFromTestCase(BaseTest)
+#     unittest.TextTestRunner(verbosity=2)
+#     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='C:/Users/Shampad/Desktop/QUPS/whatsapp_test/reports'))
