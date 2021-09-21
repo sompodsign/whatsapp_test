@@ -1,4 +1,4 @@
-
+import os
 from selenium.webdriver.common.keys import Keys
 import openpyxl as excel
 import time
@@ -35,7 +35,9 @@ class ChatPage(BasePage):
         print(filename, "created")
 
     def read_contact(self, filename):
-        file = excel.load_workbook(filename)
+        file = os.path.abspath(filename)
+        print(file)
+        file = excel.load_workbook(file)
         sheet = file.active
         firstCol = sheet['A']
         file.close()

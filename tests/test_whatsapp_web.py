@@ -17,26 +17,26 @@ class TestWhatsappWeb(BaseTest):
         page.login()
         self.assertTrue(page.result_for_searched_contact())
 
-    def test_002_verify_send_message(self):
-        print("\n" + str(test_cases(1)))
-        print("Please Scan the QR code with your smart phones whatsapp scanner")
-        chat_page = ChatPage(self.driver)
-        self.assertTrue(chat_page.send_message_to_matched_contact())
-
-    def test_003_successful_message_sent(self):
-        print("\n" + str(test_cases(2)))
-        print("Please Scan the QR code with your smart phones whatsapp scanner")
-        chat_page = ChatPage(self.driver)
-        chat_page.send_message_and_write_excel()
-
-    def test_004_seen_status(self):
-        print("\n" + str(test_cases(3)))
-        print("Please Scan the QR code with your smart phones whatsapp scanner")
-        chat_page = ChatPage(self.driver)
-        chat_page.seen_status_to_excel()
-
-    def test_005_logout(self):
-        print("\n" + str(test_cases(4)))
-        print("Please Scan the QR code with your smart phones whatsapp scanner")
-        chat_page = ChatPage(self.driver)
-        chat_page.logout()
+    # def test_002_verify_send_message(self):
+    #     print("\n" + str(test_cases(1)))
+    #     print("Please Scan the QR code with your smart phones whatsapp scanner")
+    #     chat_page = ChatPage(self.driver)
+    #     self.assertTrue(chat_page.send_message_to_matched_contact())
+    #
+    # def test_003_successful_message_sent(self):
+    #     print("\n" + str(test_cases(2)))
+    #     print("Please Scan the QR code with your smart phones whatsapp scanner")
+    #     chat_page = ChatPage(self.driver)
+    #     chat_page.send_message_and_write_excel()
+    #
+    # def test_004_seen_status(self):
+    #     print("\n" + str(test_cases(3)))
+    #     print("Please Scan the QR code with your smart phones whatsapp scanner")
+    #     chat_page = ChatPage(self.driver)
+    #     chat_page.seen_status_to_excel()
+    #
+    # def test_005_logout(self):
+    #     print("\n" + str(test_cases(4)))
+    #     print("Please Scan the QR code with your smart phones whatsapp scanner")
+    #     chat_page = ChatPage(self.driver)
+    #     chat_page.logout()

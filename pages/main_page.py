@@ -1,6 +1,6 @@
-import time
+
+import os
 import openpyxl as excel
-from selenium.webdriver.common.keys import Keys
 from pages.base_page import BasePage
 from pages.chat_page import ChatPage
 from utils.locators import Locators
@@ -16,7 +16,9 @@ class MainPage(BasePage):
         super().__init__(driver)  # Python3 version
 
     def read_contact(self, filename):
-        file = excel.load_workbook(filename)
+        file = os.path.abspath(filename)
+        print(file)
+        file = excel.load_workbook('C:\\Users\\Shampad\\Desktop\\QUPS\\whatsapp_test\\contacts.xlsx')
         sheet = file.active
         firstCol = sheet['A']
         file.close()
@@ -25,7 +27,6 @@ class MainPage(BasePage):
     def login(self):
         self.wait_element(*self.locator.QR_CODE)
         self.wait_element_custom_time(*self.locator.SEARCH_BOX, time=50)
-        # return ChatPage(self.driver)
 
     def result_for_searched_contact(self):
         contact_number = self.read_contact('contacts.xlsx')
