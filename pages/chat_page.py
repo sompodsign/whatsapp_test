@@ -32,7 +32,7 @@ class ChatPage(BasePage):
         ws['A2'], ws['B2'] = self.read_contact('contacts.xlsx'), status
         wb.save(filename)
         wb.close()
-        print(filename, "created")
+        print(filename, "successfully created")
 
     def read_contact(self, filename):
         file = os.path.abspath(filename)
