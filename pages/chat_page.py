@@ -62,7 +62,7 @@ class ChatPage(BasePage):
         message_input_field = self.find_element(*self.locator.MESSAGE_INPUT_FIELD)
         message_input_field.send_keys(message)
         message_input_field.send_keys(Keys.ENTER)
-        time.sleep(1)
+        time.sleep(2)
 
     def last_message(self):
         self.wait_element(*self.locator.LAST_MESSAGE)
@@ -88,8 +88,7 @@ class ChatPage(BasePage):
         self.send_message()
         if self.last_message():
             if self.check_message_status() != "Pending":
-                self.write_excel(filename='message_successful.xlsx')
-            print('Message not sent yet')
+                self.write_excel(filename='message_successful.xlsx', status='Sent')
 
     def seen_status_to_excel(self):
         self.login()
