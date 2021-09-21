@@ -5,10 +5,13 @@ Page-object-model (POM) is a pattern that you can apply it to develop efficient 
 
 
 ## Usage
-
-```python
-# Run tests with python <module_name>.py
-python test_whatsapp_web.py 
+## Install all dependencies
+```
+pip install -r requirements.txt
+```
+## Run tests and generate report
+```
+python tests/test_whatsapp_web.py 
 ```
 ## if you want to run all tests, you should type:
 ```
@@ -16,7 +19,7 @@ python -m unittest
  ```
 ## If you want to run just a class, you should type:
 ``` 
-python -m unittest tests.test_whatsapp_web.TestWhatsAppWeb
+python -m unittest tests.test_whatsapp_web.TestWhatsappWeb
 ```
 ## If you want to run just a test method, you should type:
 ```

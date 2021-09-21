@@ -49,6 +49,7 @@ class ChatPage(BasePage):
 
     def search_contact(self, number):
         time.sleep(1)
+        self.wait_element(*self.locator.SEARCH_BOX)
         search_field = self.find_element(*self.locator.SEARCH_BOX)
         search_field.send_keys(number)
         self.wait_element(*self.locator.MATCHED_CONTACT)
@@ -81,7 +82,7 @@ class ChatPage(BasePage):
     def send_message_to_matched_contact(self):
         self.login()
         self.send_message()
-        time.sleep(1)
+        time.sleep(2)
         return self.last_message()
 
     def send_message_and_write_excel(self):
