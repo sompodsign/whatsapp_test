@@ -5,7 +5,11 @@ Page-object-model (POM) is a pattern that you can apply it to develop efficient 
 
 
 ## Usage
-
+## Install all dependencies
+```
+pip install -r requirements.txt
+```
+## Run tests and generate report
 ```
 python tests/test_whatsapp_web.py 
 ```
