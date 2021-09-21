@@ -36,7 +36,6 @@ class ChatPage(BasePage):
 
     def read_contact(self, filename):
         file = os.path.abspath(filename)
-        print(file)
         file = excel.load_workbook(file)
         sheet = file.active
         firstCol = sheet['A']
