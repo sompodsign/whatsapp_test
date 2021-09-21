@@ -48,7 +48,7 @@ class TestWhatsappWeb(BaseTest):
 
 
 if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(BaseTest)
-    unittest.TextTestRunner(verbosity=2)
+    # suite = unittest.TestLoader().loadTestsFromTestCase(BaseTest)
+    # unittest.TextTestRunner(verbosity=2)
     unittest.main(
         testRunner=HtmlTestRunner.HTMLTestRunner(output='C:/Users/Shampad/Desktop/QUPS/whatsapp_test/reports'))
