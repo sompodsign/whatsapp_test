@@ -13,6 +13,7 @@ class ChatPage(BasePage):
 
     def menu_open(self):
         self.find_element(*self.locator.VERTICAL_DOT_MENU).click()
+        time.sleep(1)
 
     def click_logout(self):
         self.find_element(*self.locator.LOGOUT).click()
@@ -40,7 +41,7 @@ class ChatPage(BasePage):
         sheet = file.active
         firstCol = sheet['A']
         file.close()
-        return [i.value for i in firstCol if i.value != None][1:]
+        return firstCol[1].value
 
     def login(self):
         self.wait_element(*self.locator.QR_CODE)
@@ -113,6 +114,7 @@ class ChatPage(BasePage):
 
     def logout(self):
         self.login()
+        time.sleep(1)
         self.menu_open()
         self.click_logout()
         if self.canvas_on_page():
