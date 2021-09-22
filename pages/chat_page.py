@@ -40,7 +40,7 @@ class ChatPage(BasePage):
         sheet = file.active
         firstCol = sheet['A']
         file.close()
-        return firstCol[1].value
+        return [i.value for i in firstCol if i.value != None][1:]
 
     def login(self):
         self.wait_element(*self.locator.QR_CODE)
@@ -57,6 +57,16 @@ class ChatPage(BasePage):
         return self.find_element(*self.locator.MATCHED_CONTACT)
 
     def send_message(self):
+        contact_number = self.read_contact('contacts.xlsx')
+        message = "Test Message"
+        self.search_contact(contact_number).click()
+        self.wait_element(*self.locator.MESSAGE_INPUT_FIELD)
+        message_input_field = self.find_element(*self.locator.MESSAGE_INPUT_FIELD)
+        message_input_field.send_keys(message)
+        message_input_field.send_keys(Keys.ENTER)
+        time.sleep(2)
+
+    def send_message_to_multiple_numbers(self):
         contact_number = self.read_contact('contacts.xlsx')
         message = "Test Message"
         self.search_contact(contact_number).click()
