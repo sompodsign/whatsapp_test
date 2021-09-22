@@ -5,6 +5,9 @@ Page-object-model (POM) is a pattern that you can apply it to develop efficient 
 
 
 ## Usage
+## Download webdriver i.e chromedriver
+[Download chromedriver]([https://chromedriver.chromium.org/)
+#### Unzip the package and put the driver into "C:/Windows" directory as the windows directory is already in your system path so you won't need to add any executable path for your driver.
 ## Install all dependencies
 ```
 pip install -r requirements.txt
